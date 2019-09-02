@@ -81,6 +81,7 @@ function draw(){
 }
 
 function mouseDragged(){
+    //set the bird to the mouse pointer position
         Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
 }
 
@@ -104,15 +105,17 @@ async function getBackgroundImg(){
     var responseJSON = await response.json();
 
     var datetime = responseJSON.datetime;
-    var hour = datetime.slice();
-    
-    if(hour>=6 && hour<=19){
+    console.log(datetime);
+    var hour = datetime.slice(11,13);
+    console.log(hour);
+    if(hour>=06 && hour<=19){
         bg = "sprites/bg.png";
+        console.log("This is daytime");
     }
     else{
         bg = "sprites/bg2.jpg";
+        console.log("This is night time");
     }
 
     backgroundImg = loadImage(bg);
-    console.log(hour);
 }
